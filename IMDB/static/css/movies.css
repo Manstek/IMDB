@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+        
+h1 {
+    text-align: center;
+    color: #333;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+        
+.movie {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+        
+.movie-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+        
+.movie-meta {
+    color: #666;
+    margin-bottom: 10px;
+}
+        
+.movie-description {
+    color: #444;
+    margin-top: 10px;
+}
+        
+.movie-rating {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.movie-authors {
+    font-style: italic;
+    color: #7f8c8d;
+}
+
+.movies-count {
+    text-align: center;
+    margin-top: 30px;
+    color: #777;
+    font-size: 0.9em;
+}
