@@ -17,7 +17,9 @@ class Movie(models.Model):
 
     date_add = models.DateField(auto_now_add=True)
 
-    genre = models.CharField(choices=[('Comedy', 'Комедия'), ('Drama', 'Драма'), ('War', 'Боевик')],
+    genre = models.CharField(choices=[('Comedy', 'Комедия'),
+                                      ('Drama', 'Драма'),
+                                      ('War', 'Боевик')],
                              max_length=25)
 
 

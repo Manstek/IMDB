@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Админисраторы IMDB
+{% endblock title%}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static "css/users.css" %}"/>
+{% endblock extra_css %}
+
+
+{% block content %}
+<div class="content">
+    <!-- Заголовок страницы -->
+    <div class="page-header">
+        <h1 class="page-title">
+            <span class="page-icon">👑</span>
+            Администраторы IMDV
+        </h1>
+        <p class="page-subtitle">
+            Команда администраторов, которые управляют контентом и обеспечивают 
+            качество базы данных фильмов. Все администраторы прошли проверку и имеют 
+            полные права доступа.
+        </p>
+    </div>
+
+    <!-- Статистика -->
+    <div class="admins-stats">
+        <div class="stat-card">
+            <div class="stat-card-value">{{ users|length }}</div>
+            <div class="stat-card-label">Всего администраторов</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-card-value">{{ users|length }}</div>
+            <div class="stat-card-label">Активных сейчас</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-card-value">1000</div>
+            <div class="stat-card-label">Добавлено фильмов</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-card-value">24/7</div>
+            <div class="stat-card-label">Поддержка сайта</div>
+        </div>
+    </div>
+
+    <!-- Сетка администраторов -->
+    <div class="admins-grid">
+        {% for user in users %}
+        <div class="admin-card">
+            <div class="admin-header">
+                <div class="admin-avatar">
+                    {{ user.first_name|first|upper }}{{ user.last_name|first|upper }}
+                </div>
+                <div class="admin-info">
+                    <h3 class="admin-name">{{ user.first_name }} {{ user.last_name }}</h3>
+                    <span class="admin-role">Администратор</span>
+                </div>
+            </div>
+            
+            <div class="admin-details">
+                {% if user.email %}
+                <div class="detail-item">
+                    <span class="detail-icon">📧</span>
+                    <span class="detail-label">Email:</span>
+                    <span class="detail-value">{{ user.email }}</span>
+                </div>
+                {% endif %}
+                
+
+                <div class="detail-item">
+                    <span class="detail-icon">🎭</span>
+                    <span class="detail-label">Роль:</span>
+                    <span class="detail-value">
+                        <span class="status-active">{% if user.is_superuser %}
+                                                        Администратор
+                                                    {% else %}
+                                                        Модератор
+                                                    {% endif %}</span>
+                    </span>
+                </div>
+                
+                <div class="detail-item">
+                    <span class="detail-icon">📅</span>
+                    <span class="detail-label">На сайте с:</span>
+                    <span class="detail-value">{{ user.date_joined|date:"d.m.Y" }}</span>
+                </div>
+                
+                <div class="detail-item">
+                    <span class="detail-icon">⏰</span>
+                    <span class="detail-label">Последняя активность:</span>
+                    <span class="detail-value">{{ user.last_login|date:"d.m.Y" }}</span>
+                </div>
+                
+                <div class="detail-item">
+                    <span class="detail-icon">✅</span>
+                    <span class="detail-label">Статус:</span>
+                    <span class="detail-value">
+                        {% if user.is_active %}
+                            <span class="status-active">● Активен</span>
+                        {% else %}
+                            <span class="status-no-active">Неактивен</span>
+                        {% endif%}
+                    </span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+// JavaScript для страницы админов
+document.addEventListener('DOMContentLoaded', function() {
+    // Анимация карточек при загрузке
+    const adminCards = document.querySelectorAll('.admin-card');
+    adminCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.5s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+    
+    // Эффект при наведении на статистику
+    const statCards = document.querySelectorAll('.stat-card');
+    statCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const value = this.querySelector('.stat-card-value');
+            if (value) {
+                value.style.transform = 'scale(1.1)';
+                value.style.transition = 'transform 0.3s ease';
+            }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            const value = this.querySelector('.stat-card-value');
+            if (value) {
+                value.style.transform = 'scale(1)';
+            }
+        });
+    });
+});
+</script>
+{% endblock content %}

@@ -1,0 +1,220 @@
+/* Основные стили для контента страницы */
+.content {
+    flex: 1;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+/* Заголовок страницы */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(30, 30, 30, 0.7);
+    border-radius: 15px;
+    border-left: 5px solid #f5c518;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.page-title {
+    color: #f5c518;
+    font-size: 2.5rem;
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.page-icon {
+    font-size: 2.2rem;
+}
+
+.page-subtitle {
+    color: #aaa;
+    font-size: 1.1rem;
+    margin: 0;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Статистика админов */
+.admins-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: rgba(40, 40, 40, 0.7);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #f5c518;
+    box-shadow: 0 8px 25px rgba(245, 197, 24, 0.1);
+}
+
+.stat-card-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #f5c518;
+    margin: 0.5rem 0;
+}
+
+.stat-card-label {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin: 0;
+}
+
+/* Сетка админов */
+.admins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.admin-card {
+    background: rgba(35, 35, 35, 0.8);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    border-color: #f5c518;
+    box-shadow: 0 10px 30px rgba(245, 197, 24, 0.15);
+}
+
+.admin-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #f5c518, #ffd700);
+}
+
+.admin-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.admin-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #2d2d2d, #3d3d3d);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #f5c518;
+    border: 3px solid #f5c518;
+    flex-shrink: 0;
+    font-weight: 600;
+}
+
+.admin-info {
+    flex: 1;
+}
+
+.admin-name {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.admin-role {
+    display: inline-block;
+    background: rgba(245, 197, 24, 0.2);
+    color: #f5c518;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.admin-details {
+    display: grid;
+    gap: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-icon {
+    color: #f5c518;
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+}
+
+.detail-label {
+    color: #aaa;
+    font-weight: 500;
+    min-width: 180px;
+}
+
+.detail-value {
+    color: #fff;
+    flex: 1;
+}
+
+.status-active {
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+.status-no-active {
+    color: red;
+    font-weight: 600;
+}
+
+/* Для случаев когда email нет */
+.detail-value:empty::before {
+    content: "Не указан";
+    color: #888;
+    font-style: italic;
+}
+
+/* Базовые стили body для правильного отображения */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #0f1419 0%, #1a1f24 100%);
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

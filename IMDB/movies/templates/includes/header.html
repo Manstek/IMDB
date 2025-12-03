@@ -1,0 +1,88 @@
+<header class="header header-simple">
+    <div class="header-container">
+        <!-- Название сайта (без логотипа) -->
+        <a href="{% url 'movies:movies_list' %}" class="site-title">
+            <span class="title-accent">IMDV</span> - База фильмов
+        </a>
+
+        <!-- Основная навигация -->
+        <nav class="main-nav">
+            <a href="{% url 'movies:movies_list' %}" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                Главная
+            </a>
+            <a href="{% url 'movies:movies_list' %}" class="nav-item">
+                <span class="nav-icon">🎬</span>
+                Все фильмы
+            </a>
+            <a href="{% url 'movies:movie_add' %}" class="nav-item nav-item--highlight">
+                <span class="nav-icon">➕</span>
+                Добавить фильм
+            </a>
+        </nav>
+        
+        <!-- Дополнительные ссылки -->
+        <div class="secondary-nav">
+            <a href="" class="secondary-item">
+                <span class="item-icon">🏷️</span>
+                Жанры
+            </a>
+            <a href="{% url 'movies:user-admin-list' %}" class="secondary-item">
+                <span class="item-icon">👥</span>
+                Админы
+            </a>
+        </div>
+    </div>
+</header>
+
+<script>
+        // Добавьте этот скрипт в конец body
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPath = window.location.pathname;
+        const allLinks = document.querySelectorAll('.nav-item, .secondary-item');
+        
+        allLinks.forEach(link => {
+            const linkPath = link.getAttribute('href');
+            
+            // Для главной страницы
+            if (currentPath === '/' && linkPath === '/') {
+                link.classList.add('active');
+            }
+            // Для других страниц (если текущий путь начинается с пути ссылки)
+            else if (linkPath !== '/' && currentPath.startsWith(linkPath)) {
+                link.classList.add('active');
+            }
+            
+            // Добавляем эффект при наведении
+            link.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.transform = 'translateY(-2px)';
+                }
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Эффект для названия сайта
+        const siteTitle = document.querySelector('.site-title');
+        if (siteTitle) {
+            siteTitle.addEventListener('mouseenter', function() {
+                const accent = this.querySelector('.title-accent');
+                if (accent) {
+                    accent.style.textShadow = '0 0 15px rgba(245, 197, 24, 0.5)';
+                }
+            });
+            
+            siteTitle.addEventListener('mouseleave', function() {
+                const accent = this.querySelector('.title-accent');
+                if (accent) {
+                    accent.style.textShadow = '0 0 10px rgba(245, 197, 24, 0.3)';
+                }
+            });
+        }
+    });
+</script>

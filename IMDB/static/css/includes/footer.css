@@ -1,0 +1,228 @@
+/* Основные стили для footer */
+.footer.footer-simple {
+    background: linear-gradient(to right, #1a1a1a, #2a2a2a);
+    color: #e0e0e0;
+    padding: 3rem 0 1.5rem;
+    border-top: 3px solid #f5c518;
+    margin-top: 4rem;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Колонки footer */
+.footer-columns {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* Заголовки */
+.footer-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-title .title-accent {
+    color: #f5c518;
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+.footer-subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f5c518;
+    margin: 0 0 1rem 0;
+    border-left: 3px solid #f5c518;
+    padding-left: 12px;
+}
+
+/* Описание сайта */
+.footer-description {
+    line-height: 1.6;
+    margin: 0;
+    color: #b0b0b0;
+    font-size: 0.95rem;
+}
+
+/* Статистика */
+.footer-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 0.5rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(245, 197, 24, 0.1);
+    border-radius: 8px;
+    min-width: 80px;
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f5c518;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    margin-top: 0.25rem;
+}
+
+/* Ссылки в footer */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #d0d0d0;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+
+.footer-link:hover {
+    color: #f5c518;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+    padding-left: 12px;
+}
+
+.link-icon {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+}
+
+/* Информационные блоки */
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+.info-icon {
+    font-size: 1rem;
+    color: #f5c518;
+    width: 24px;
+}
+
+.info-text {
+    flex: 1;
+}
+
+/* Слоган */
+.footer-tagline {
+    font-style: italic;
+    color: #888;
+    font-size: 0.9rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    border-left: 2px solid #f5c518;
+}
+
+/* Нижняя часть footer */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+}
+
+.footer-copyright {
+    color: #888;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.copyright-note {
+    font-size: 0.8rem;
+    color: #666;
+    max-width: 500px;
+}
+
+.footer-credits {
+    color: #aaa;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.heart-icon {
+    color: #ff4757;
+    font-size: 1.1rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* Анимация для сердечка */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Эффекты при наведении */
+.footer-link:hover .link-icon {
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+    background: rgba(245, 197, 24, 0.15);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.footer-tagline:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #aaa;
+    transition: all 0.3s ease;
+}

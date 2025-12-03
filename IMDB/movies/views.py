@@ -11,11 +11,11 @@ User = get_user_model()
 
 def movies_list(request):
     movies = Movie.objects.all()
-    return render(request, 'movies.html', {'movies': movies})
+    return render(request, 'movies/movies.html', {'movies': movies})
 
 def users_list(request):
     users = User.objects.filter(is_staff=True).all()
-    return render(request, 'users.html', {'users': users})
+    return render(request, 'movies/users.html', {'users': users})
 
 def contact(request):
     if request.method == 'POST':
@@ -28,7 +28,7 @@ def contact(request):
             return redirect('movies:movies_list')
     else:
         form = TelegramContactForm()
-        return render(request, 'request-a-qoute.html', {'form': form})
+        return render(request, 'movies/request-a-qoute.html', {'form': form})
 
 
 def movies_add(request):
@@ -39,4 +39,4 @@ def movies_add(request):
             return redirect('movies:movies_list')
     else:
         form = MovieCreateForm()
-        return render(request, 'movie_add.html', {'form': form})
+        return render(request, 'movies/movie_add.html', {'form': form})

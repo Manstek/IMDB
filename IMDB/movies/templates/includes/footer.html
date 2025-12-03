@@ -1,0 +1,164 @@
+<footer class="footer footer-simple">
+    <div class="footer-container">
+        <!-- Основные колонки -->
+        <div class="footer-columns">
+            <!-- Колонка 1: О сайте -->
+            <div class="footer-section">
+                <h3 class="footer-title">
+                    <span class="title-accent">IMDV</span> - База фильмов
+                </h3>
+                <p class="footer-description">
+                    Учебный проект - аналог IMDb. Здесь вы можете находить, 
+                    добавлять и оценивать фильмы. База данных регулярно обновляется.
+                </p>
+                <div class="footer-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">фильмов</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">жанров</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Колонка 2: Навигация -->
+            <div class="footer-section">
+                <h4 class="footer-subtitle">Навигация</h4>
+                <div class="footer-links">
+                    <a href="{% url 'movies:movies_list' %}" class="footer-link">
+                        <span class="link-icon">🏠</span>
+                        Главная страница
+                    </a>
+                    <a href="{% url 'movies:movies_list' %}" class="footer-link">
+                        <span class="link-icon">🎬</span>
+                        Все фильмы
+                    </a>
+                    <a href="{% url 'movies:movie_add' %}" class="footer-link">
+                        <span class="link-icon">➕</span>
+                        Добавить фильм
+                    </a>
+                </div>
+            </div>
+
+            <!-- Колонка 3: Разделы -->
+            <div class="footer-section">
+                <h4 class="footer-subtitle">Разделы</h4>
+                <div class="footer-links">
+                    <a href="" class="footer-link">
+                        <span class="link-icon">🏷️</span>
+                        Жанры фильмов
+                    </a>
+                    <a href="{% url 'movies:user-admin-list' %}" class="footer-link">
+                        <span class="link-icon">👥</span>
+                        Администраторы
+                    </a>
+                    <a href="" class="footer-link">
+                        <span class="link-icon">⭐</span>
+                        Топ фильмов
+                    </a>
+                    <a href="" class="footer-link">
+                        <span class="link-icon">🆕</span>
+                        Новинки
+                    </a>
+                </div>
+            </div>
+
+            <!-- Колонка 4: Информация -->
+            <div class="footer-section">
+                <h4 class="footer-subtitle">Информация</h4>
+                <div class="footer-info">
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <span class="info-text">support@imdv-study.ru</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <span class="info-text">+7 (920) 517-12-10</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🏛️</span>
+                        <span class="info-text">Учебный проект</span>
+                    </div>
+                </div>
+                <div class="footer-tagline">
+                    "Фильмы - это жизнь с вырезанными скучными моментами"
+                </div>
+            </div>
+        </div>
+
+        <!-- Нижняя часть (копирайт) -->
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                © 2025 IMDV - База фильмов. Все права защищены.
+                <span class="copyright-note">
+                    Все фильмы принадлежат их правообладателям. Проект создан в учебных целях.
+                </span>
+            </div>
+            <div class="footer-credits">
+                Создано с <span class="heart-icon">❤️</span> для изучения веб-разработки
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Добавьте этот скрипт в конец body
+document.addEventListener('DOMContentLoaded', function() {
+    // Анимация для статистики
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    statNumbers.forEach(stat => {
+        const originalText = stat.textContent;
+        stat.textContent = '0';
+        
+        setTimeout(() => {
+            let current = 0;
+            const target = parseInt(originalText);
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                stat.textContent = Math.floor(current) + '+';
+            }, 30);
+        }, 500);
+    });
+    
+    // Эффект при наведении на ссылки
+    const footerLinks = document.querySelectorAll('.footer-link');
+    footerLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.paddingLeft = '12px';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('active')) {
+                this.style.paddingLeft = '8px';
+            }
+        });
+    });
+    
+    // Эффект для статистических блоков
+    const statItems = document.querySelectorAll('.stat-item');
+    statItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            const number = this.querySelector('.stat-number');
+            if (number) {
+                number.style.transform = 'scale(1.1)';
+                number.style.transition = 'transform 0.3s ease';
+            }
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            const number = this.querySelector('.stat-number');
+            if (number) {
+                number.style.transform = 'scale(1)';
+            }
+        });
+    });
+});
+</script>
