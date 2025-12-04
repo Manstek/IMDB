@@ -15,3 +15,16 @@ class MovieCreateForm(forms.ModelForm):
     class Meta:
         model = Movie
         fields = ('title', 'description', 'year', 'author', 'rating')
+
+
+class SignUpForm(forms.Form):
+    """Форма для регистрации."""
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(max_length=100)
+    confirm_password = forms.CharField(max_length=100)
+
+
+class SignInForm(forms.Form):
+    """Форма для регистрации."""
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(max_length=100)

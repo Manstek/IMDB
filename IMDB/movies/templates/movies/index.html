@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Мини IMDB - Список фильмов
+{% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static "css/movies.css" %}"/>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="content">
+    <!-- Заголовок страницы -->
+    <div class="page-header">
+        <h1 class="page-title">
+            <span class="page-icon">🎬</span>
+            Все фильмы
+        </h1>
+        <p class="page-subtitle">
+            Полная база фильмов нашего каталога. Ищите, выбирайте и наслаждайтесь просмотром. 
+            Каждый фильм проверен нашими администраторами.
+        </p>
+    </div> <!-- Закрываем div.page-header -->
+
+    <!-- Статистика -->
+    <div class="films-stats">
+        <div class="stat-card">
+            <div class="stat-card-value">{{ movies|length }}</div>
+            <div class="stat-card-label">Всего фильмов</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-card-value">{{ avg_rating|floatformat:2 }}</div>
+            <div class="stat-card-label">Средний рейтинг</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-card-value">{{ first_year }} - {{ last_year }}</div>
+            <div class="stat-card-label">Годы выпуска</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-card-value">{{ genre_count }}+</div>
+            <div class="stat-card-label">Жанров</div>
+        </div>
+    </div>
+
+    <!-- Сетка фильмов -->
+    <div class="films-grid">
+        {% for film in movies %}
+        <div class="film-card">
+            <!-- Заголовок фильма с рейтингом -->
+            <div class="film-header">
+                <h3 class="film-title">{{ film.title }}</h3>
+                <div class="film-rating">
+                    <span class="rating-value">{{ film.rating }}</span>
+                    <span class="rating-star">⭐</span>
+                </div>
+            </div>
+            
+            <!-- Блок информации о фильме -->
+            <div class="film-info">
+                <div class="info-row">
+                    <span class="info-label">Год:</span>
+                    <span class="info-value">{{ film.year }}</span>
+                </div>
+                
+                <div class="info-row">
+                    <span class="info-label">Жанр:</span>
+                    <span class="genre-badge">{{ film.genre }}</span>
+                </div>
+                
+                <div class="info-row">
+                    <span class="info-label">Авторы:</span>
+                    <span class="info-value authors">{{ film.author }}</span>
+                </div>
+            </div>
+            
+            <!-- Описание фильма -->
+            <div class="film-description">
+                <p>{{ film.description|truncatewords:30 }}</p>
+            </div>
+            
+            <!-- Кнопки действий -->
+            <div class="film-actions">
+                <button class="btn-details">Подробнее</button>
+                <button class="btn-watch">Смотреть</button>
+                <button class="btn-favorite">❤️</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div> <!-- Закрываем div.content -->
+{% endblock content %}
+{% block extra_js %}
+<script>
+// Исправленный JavaScript для страницы фильмов
+document.addEventListener('DOMContentLoaded', function() {
+    // УБИРАЕМ старую анимацию карточек - теперь она в CSS
+    
+    // Обработка кнопок в карточках
+    const filmCards = document.querySelectorAll('.film-card');
+    
+    filmCards.forEach(card => {
+        const btnDetails = card.querySelector('.btn-details');
+        const btnWatch = card.querySelector('.btn-watch');
+        const btnFavorite = card.querySelector('.btn-favorite');
+        
+        // Функционал кнопки "Подробнее"
+        if (btnDetails) {
+            btnDetails.addEventListener('click', function(e) {
+                e.preventDefault();
+                const filmTitle = card.querySelector('.film-title').textContent;
+                alert('Подробнее о фильме: ' + filmTitle);
+                // Здесь можно добавить переход на страницу фильма
+                // window.location.href = `/film/${filmId}/`;
+            });
+        }
+        
+        // Функционал кнопки "Смотреть"
+        if (btnWatch) {
+            btnWatch.addEventListener('click', function(e) {
+                e.preventDefault();
+                const filmTitle = card.querySelector('.film-title').textContent;
+                alert('Начинаем просмотр фильма: ' + filmTitle);
+                // Здесь можно запустить видеоплеер
+            });
+        }
+        
+        // Функционал кнопки "Избранное"
+        if (btnFavorite) {
+            btnFavorite.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation(); // Предотвращаем всплытие события
+                
+                const heart = this;
+                const filmTitle = card.querySelector('.film-title').textContent;
+                
+                // Анимация переключения
+                heart.style.transition = 'all 0.3s ease';
+                heart.style.transform = 'scale(1.3)';
+                
+                setTimeout(() => {
+                    if (heart.textContent === '❤️') {
+                        heart.textContent = '💖';
+                        heart.style.color = '#ff4757';
+                        console.log('Добавлен в избранное:', filmTitle);
+                    } else {
+                        heart.textContent = '❤️';
+                        heart.style.color = '#ff4757';
+                        console.log('Удален из избранного:', filmTitle);
+                    }
+                    
+                    heart.style.transform = 'scale(1)';
+                }, 150);
+            });
+        }
+        
+        // Клик по всей карточке (кроме кнопок)
+        card.addEventListener('click', function(e) {
+            if (!e.target.closest('.btn-details') && 
+                !e.target.closest('.btn-watch') && 
+                !e.target.closest('.btn-favorite')) {
+                // Здесь можно добавить переход на детальную страницу
+                // console.log('Клик по карточке фильма');
+            }
+        });
+    });
+    
+    // Добавляем классы для цветов рейтинга
+    filmCards.forEach(card => {
+        const ratingElement = card.querySelector('.film-rating');
+        if (ratingElement) {
+            const ratingValue = parseFloat(card.querySelector('.rating-value').textContent);
+            
+            if (ratingValue >= 8.0) {
+                ratingElement.classList.add('rating-high');
+            } else if (ratingValue >= 5.0) {
+                ratingElement.classList.add('rating-medium');
+            } else {
+                ratingElement.classList.add('rating-low');
+            }
+        }
+    });
+    
+    // Обработка статистических карточек
+    const statCards = document.querySelectorAll('.stat-card');
+    statCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const value = this.querySelector('.stat-card-value');
+            if (value) {
+                value.style.transform = 'scale(1.1)';
+                value.style.transition = 'transform 0.3s ease';
+            }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            const value = this.querySelector('.stat-card-value');
+            if (value) {
+                value.style.transform = 'scale(1)';
+            }
+        });
+    });
+});
+</script>
+{% endblock extra_js %}

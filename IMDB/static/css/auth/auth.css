@@ -1,0 +1,464 @@
+/* Контейнер контента */
+.content {
+    flex: 1;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 200px);
+}
+
+/* Контейнер формы */
+.auth-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Карточка формы */
+.auth-card {
+    background: rgba(35, 35, 35, 0.9);
+    border-radius: 15px;
+    padding: 2.5rem;
+    border: 1px solid rgba(245, 197, 24, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #f5c518, #ffd700);
+}
+
+/* Заголовок формы */
+.auth-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.auth-title {
+    color: #f5c518;
+    font-size: 2.2rem;
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.auth-icon {
+    font-size: 2rem;
+}
+
+.auth-subtitle {
+    color: #aaa;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Форма */
+.auth-form {
+    margin-bottom: 2.5rem;
+}
+
+/* Сообщения об ошибках */
+.auth-error {
+    background: rgba(255, 71, 87, 0.1);
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.error-icon {
+    color: #ff4757;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.error-messages {
+    flex: 1;
+}
+
+.error-messages p {
+    color: #ff6b81;
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.error-messages p:last-child {
+    margin-bottom: 0;
+}
+
+/* Группы полей */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.label-icon {
+    font-size: 1.1rem;
+    color: #f5c518;
+}
+
+/* Обертка для input */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.9rem 1rem 0.9rem 3rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #f5c518;
+    box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    color: #888;
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.toggle-password:hover {
+    color: #f5c518;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Состояния полей */
+.input-error {
+    border-color: #ff4757 !important;
+    background: rgba(255, 71, 87, 0.05) !important;
+}
+
+.input-error:focus {
+    box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.1) !important;
+}
+
+.input-success {
+    border-color: #2ed573 !important;
+    background: rgba(46, 213, 115, 0.05) !important;
+}
+
+.input-success:focus {
+    box-shadow: 0 0 0 3px rgba(46, 213, 115, 0.1) !important;
+}
+
+.input-focused .input-icon {
+    color: #f5c518;
+}
+
+/* Подсказки */
+.form-hint {
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+/* Требования к паролю */
+.password-requirements {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.requirement {
+    display: flex;
+    align-items: center;
+    color: #888;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+    padding-left: 1.2rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.requirement::before {
+    content: '○';
+    position: absolute;
+    left: 0;
+    font-size: 0.7rem;
+}
+
+.requirement-met {
+    color: #2ed573;
+}
+
+.requirement-met::before {
+    content: '✓';
+    color: #2ed573;
+}
+
+.requirement-not-met {
+    color: #ff4757;
+}
+
+.requirement-not-met::before {
+    content: '✗';
+    color: #ff4757;
+}
+
+/* Проверка совпадения паролей */
+.password-match {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.match-success {
+    background: rgba(46, 213, 115, 0.1);
+    color: #2ed573;
+}
+
+.match-error {
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+}
+
+.match-icon {
+    font-size: 0.9rem;
+}
+
+.match-text {
+    font-weight: 500;
+}
+
+/* Ошибки полей */
+.field-errors {
+    color: #ff4757;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.field-errors::before {
+    content: '⚠️';
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+}
+
+.error-text {
+    display: block;
+    line-height: 1.4;
+}
+
+/* Кнопка отправки */
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f5c518, #ffd700);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 197, 24, 0.3);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+.submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.button-icon {
+    font-size: 1.2rem;
+}
+
+.button-loading {
+    background: linear-gradient(135deg, #888, #aaa) !important;
+    color: #333 !important;
+}
+
+.button-error {
+    animation: shake 0.5s ease;
+    background: linear-gradient(135deg, #ff4757, #ff6b81) !important;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Ссылки */
+.auth-links {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-link-text {
+    color: #aaa;
+    font-size: 0.95rem;
+    margin: 0.5rem 0;
+}
+
+.auth-link {
+    color: #f5c518;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.auth-link:hover {
+    color: #ffd700;
+    text-decoration: underline;
+}
+
+.link-icon {
+    font-size: 0.9rem;
+}
+
+/* Преимущества регистрации */
+.auth-benefits {
+    background: rgba(245, 197, 24, 0.05);
+    border: 1px solid rgba(245, 197, 24, 0.1);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.benefits-title {
+    color: #f5c518;
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.benefits-icon {
+    font-size: 1.2rem;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefit-item {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.benefit-item:last-child {
+    margin-bottom: 0;
+}
+
+.benefit-icon {
+    color: #f5c518;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .content {
+        padding: 0 1rem;
+    }
+    
+    .auth-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .auth-title {
+        font-size: 1.8rem;
+    }
+    
+    .form-input {
+        padding: 0.8rem 1rem 0.8rem 2.8rem;
+    }
+    
+    .input-icon {
+        left: 0.8rem;
+    }
+    
+    .toggle-password {
+        right: 0.8rem;
+    }
+}
