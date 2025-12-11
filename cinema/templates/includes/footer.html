@@ -1,0 +1,39 @@
+<footer>
+    <div>
+        <div>
+            <p>IMDB - Самая популярная база данных фильмов в мире</p>
+        </div>
+        
+        <div>
+            <h3>Разделы сайта</h3>
+            <ul>
+                <li><a href="{% url 'cinema:movies' %}">Главная</a></li>
+                <li><a href="">Добавить фильм</a></li>
+                <li><a href="{% url 'cinema:movies' %}">Лучшие фильмы</a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>Аккаунт</h3>
+            <ul>
+                <li><a href="">Войти</a></li>
+                <li><a href="">Зарегистрироваться</a></li>
+                <li><a href="">Выйти</a></li>
+                <li><a href="">Мой профиль</a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>Правовая информация</h3>
+            <ul>
+                <li><a href="{% url 'cinema:privacy' %}">Политика конфиденциальности</a></li>
+                <li><a href="{% url 'cinema:contact' %}">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <p>&copy; 2025 IMDB. Все права защищены.</p>
+            <p>Данный сайт является учебным проектом и не связан с официальным IMDB.</p>
+        </div>
+    </div>
+</footer>

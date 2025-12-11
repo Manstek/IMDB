@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Фильмы ({{ movies_count }}):</h1>
+{% for movie in movie_list %}
+        Название фильма: {{ movie.title }}, рейтинг - {{ movie.rating }}
+        <br><a href="{% url 'cinema:movie-detail' movie.pk %}">Подробнее</a>
+        <br><a href="{% url 'cinema:movie-edit' movie.pk %}">Редактировать</a>
+        <br><a href="{% url 'cinema:movie-delete' movie.pk %}">Удалить</a>
+        <br>
+    {% endfor %}
+{% endblock content %}

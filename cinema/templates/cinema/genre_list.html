@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Жанры IMDB:</h1>
+    {% for genre in genre_list %}
+        {{ genre.name }}
+        <br>
+    {% endfor %}
+{% endblock content %}

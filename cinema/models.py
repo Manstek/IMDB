@@ -18,6 +18,9 @@ class Genre(models.Model):
     name = models.CharField(max_length=GENRE_MAX_LENGTH,
                             verbose_name='Название жанра')
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Жанр'
         verbose_name_plural = 'Жанры'
@@ -46,6 +49,9 @@ class Movie(models.Model):
             MaxValueValidator(MAX_RATING)])
     created_at = models.DateTimeField(auto_now_add=True,
                                       verbose_name='Дата создания')
+
+    def __str__(self):
+        return self.title
 
     class Meta:
         verbose_name = 'Фильм'

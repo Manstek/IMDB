@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if 'movie-add' in request.path %}
+        <h1>Добавить фильм:</h1>
+    {% else %}
+        <h1>Редактировать фильм:</h1>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if 'movie-add' in request.path %}
+            <button type="submit">Добавить</button>
+        {% else %}
+            <button type="submit">Сохранить</button>
+        {% endif %}
+    </form>
+{% endblock content %}
